@@ -1,4 +1,4 @@
-"""firstproject URL Configuration
+"""managementstudio URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -13,10 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import url
 from django.contrib import admin
-
+from sellingportal.views import Index,Student,StudentDegree,Register
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^firstapp/', include('firstapp.urls')),
+    url(r'^index/$',Index,name='index' ),
+    url(r'^student/$',Student,name='student' ),
+    url(r'^degree/(?P<student_id>[0-9]+)/$',StudentDegree,name='degree' ),
+    url(r'^register/$',Register,name='register' ),
 ]
